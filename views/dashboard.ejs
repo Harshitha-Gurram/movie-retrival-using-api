@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie App Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: blueviolet;
+            padding: 40px;
+            border-radius: 2px;
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .movie-info {
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to the Movie App</h2>
+        <a href="/logout" class="logout-button">Logout</a>
+    </div>
+    <div class="container">
+        <form action="/moviedetails" method="GET">
+            <input
+                name="title"
+                type="text"
+                placeholder="Enter movie name to get details"
+            />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="container movie-info">
+        <h2>Movies Information</h2>
+        <% if (result) { %>
+            <h4>Movie Name: <%= result.Title %></h4>
+            <h4>Date of Release: <%= result.Date_of_Release %></h4>
+            <h4>Actors: <%= result.Actors %></h4>
+            <h4>Rating: <%= result.Rating %></h4>
+        <% } else { %>
+            <p>No movie information available. Please enter a movie name above.</p>
+        <% } %>
+    </div>
+</body>
+</html>
